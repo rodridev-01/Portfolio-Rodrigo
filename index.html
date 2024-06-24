@@ -17,8 +17,16 @@
 
 <body>
     <main>
-        <div class="logo-overlay"></div><img class="tcf-logo" src="img/lol.gif" alt="Logo"><span class="page-state pulse">Loading</span>
-        <div class="room"><img class="room-gif" src="img/room.gif" alt="Room"><svg class="monitor-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 600 400" style="enable-background:new 0 0 600 400;" xml:space="preserve"><g class="monitor"><rect class="st1" x="79.5" y="157.5" width="81" height="49"></rect></g></svg>
+        <div class="logo-overlay"></div>
+        <img class="tcf-logo" src="img/lol.gif" alt="Logo">
+        <span class="page-state pulse">Loading</span>
+        <div class="room">
+            <img class="room-gif" src="img/room.gif" alt="Room">
+            <svg class="monitor-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 600 400" style="enable-background:new 0 0 600 400;" xml:space="preserve">
+                <g class="monitor">
+                    <rect class="st1" x="79.5" y="157.5" width="81" height="49"></rect>
+                </g>
+            </svg>
             <div class="interactive-wrap">
                 <div class="monitor"></div>
             </div>
@@ -37,8 +45,13 @@
                 <div class="app-icon contact"><a href="mailto:rph26031994@gmail.com" target="_blank" rel="noopener"><i class="fa fa-envelope fa-2x"></i><span>Contact</span></a></div>
                 <div class="clearfix"></div>
                 <div class="app-icon trash"><i class="fa fa-trash fa-2x"></i><span>Trash</span></div>
-                <div class="clearfix">
-                    </i><span></span></div>
+                <div class="clearfix"></div>
+                <div class="app-icon mp3" id="toggle-music"><i class="fa fa-play fa-2x" id="music-icon"></i><span>Music</span></div>
+                <div class="clearfix"></div>
+                <audio id="background-music" autoplay loop>
+                    <source src="music/Littleroot Town.mp3" type="audio/mp3">
+                    Your browser does not support the audio element.
+                </audio>
             </div>
             <div class="apps social">
                 <div class="app-icon social"><a href="https://www.instagram.com/rodrigou.py/" target="_blank" rel="noopener"><i class="fa fa-instagram fa-2x"></i><span>insta</span></a></div>
@@ -98,9 +111,32 @@
                 <div>
                     <p class="time">10:54pm</p>
                     <p class="date">27/04/2017</p>
-                </div><i class="fa fa-power-off fa-2x shutdown info-icon"></i></div>
+                </div>
+                <i class="fa fa-power-off fa-2x shutdown info-icon"></i>
+            </div>
         </div>
     </main>
+    <script>
+        const music = document.getElementById('background-music');
+        const toggleMusicButton = document.getElementById('toggle-music');
+        const musicIcon = document.getElementById('music-icon');
+
+        music.volume = 0.04;
+
+        toggleMusicButton.addEventListener('click', () => {
+            if (music.paused) {
+                music.play();
+                musicIcon.classList.remove('fa-play');
+                musicIcon.classList.add('fa-pause');
+            } else {
+                music.pause();
+                musicIcon.classList.remove('fa-pause');
+                musicIcon.classList.add('fa-play');
+            }
+        });
+    </script>
+
 </body>
 
 </html>
+
